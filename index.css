@@ -203,6 +203,7 @@ h1{
 			0.063em 0.063em 5.04em #14EACFFF;
 	animation: anime 1s linear infinite;
 	margin-top: 30vw;
+overflow: hidden ;
 } /*
 div:nth-child(1){
 	animation-delay: 0.2s;
