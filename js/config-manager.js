@@ -1,4 +1,6 @@
 // Configuration Manager Module
+import portfolioData from '../src/config.js';
+
 export class ConfigManager {
     constructor() {
         this.config = null;
@@ -7,15 +9,11 @@ export class ConfigManager {
     // Load and parse config
     async loadConfig() {
         try {
-            const response = await fetch('./config.json');
-            if (!response.ok) {
-                throw new Error(`Failed to load config: ${response.status} ${response.statusText}`);
-            }
-            
-            this.config = await response.json();
+            // Use the imported config instead of fetching JSON
+            this.config = portfolioData.portfolioConfig;
             
             if (!this.config) {
-                throw new Error('Failed to parse config file - empty or invalid JSON');
+                throw new Error('Failed to load config - portfolioConfig not found');
             }
             
             console.log('Config loaded successfully');

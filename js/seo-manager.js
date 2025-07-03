@@ -1,4 +1,6 @@
 // SEO Manager Module
+import portfolioData from '../src/config.js';
+
 export class SEOManager {
     // Update SEO meta tags
     updateSEOTags(config) {
@@ -31,23 +33,8 @@ export class SEOManager {
         // Build sameAs array dynamically
         const sameAs = config.social_links?.map(link => link.url).filter(Boolean) || [];
 
-        // Update JSON-LD
-        const jsonLD = {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": config.header.greeting,
-            "url": seo.base_url,
-            "sameAs": sameAs
-        };
-
-        // Add work info if available
-        if (config.experience?.jobs?.[0]) {
-            jsonLD.jobTitle = config.experience.jobs[0].role;
-            jsonLD.worksFor = {
-                "@type": "Organization",
-                "name": config.experience.jobs[0].company
-            };
-        }
+        // Use the imported personSchema directly
+        const jsonLD = portfolioData.personSchema;
         
         document.querySelector('script[type="application/ld+json"]').textContent = JSON.stringify(jsonLD, null, 2);
     }
