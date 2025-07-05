@@ -6,6 +6,8 @@
     --heading-color: #3498db; /* Blue headings for light mode */
     --primary-color-dark: #2980b9; /* Darker blue for hover effects */
     --live-demo-color: #2980b9; /* Dark blue for live demo button */
+    --link-color: #3498db; /* Blue for links */
+    --section-heading-color: #333333; /* White section headings in light mode */
 }
 
 /* Dark mode */
@@ -14,8 +16,10 @@
     --text-muted: rgba(255, 255, 255, 0.8); /* Lighter shade of white instead of grey */
     --heading-color: #4dabf7; /* Lighter blue for dark mode headings */
     --primary-color: #4dabf7; /* Lighter blue for dark mode primary elements */
-    --primary-color-dark: #3d8bd2; /* Slightly darker for hover effects */
-    --live-demo-color: #343fbb; /* Keep live demo button dark blue in both modes */
+    --primary-color-dark: #2980b9; /* Darker blue for hover effects in dark mode */
+    --live-demo-color: #2980b9; /* Keep live demo button dark blue in both modes */
+    --link-color: #4dabf7; /* Lighter blue for links in dark mode */
+    --section-heading-color: #ffffff; /* White section headings in dark mode */
 }
 
 /* Specific heading styles */
@@ -23,9 +27,21 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color);
 }
 
-/* Section headings */
-section h2 {
-    color: var(--heading-color);
+/* Section headings - explicitly target all section h2 elements */
+section h2,
+.projects h2,
+.skills h2,
+.experience h2,
+.projects-on-github h2 {
+    color: var(--heading-color) !important;
+    font-weight: 700;
+}
+
+/* Override specific section headings to be white */
+.skills > h2,
+.projects > h2,
+.experience > h2 {
+    color: var(--section-heading-color) !important;
     font-weight: 700;
 }
 
@@ -46,6 +62,16 @@ section h2 {
     color: var(--heading-color);
 }
 
+/* Links styling */
+a {
+    color: var(--link-color);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-color-dark);
+}
+
 /* Live demo button - always dark blue */
 .live-demo-btn {
     background-color: var(--live-demo-color) !important;
@@ -54,6 +80,21 @@ section h2 {
 }
 
 .live-demo-btn:hover {
-    background-color: var(--primary-color-dark) !important;
-    border-color: var(--primary-color-dark) !important;
+    background-color: #1a5f88 !important; /* Even darker blue on hover */
+    border-color: #1a5f88 !important;
+}
+
+/* Theme switch button - add blue glow in dark mode */
+:root[data-theme="dark"] .theme-switch {
+    box-shadow: 0 0 8px rgba(77, 171, 247, 0.5);
+}
+
+/* Footer styling */
+.footer {
+    border-top: 2px solid var(--primary-color-dark);
+}
+
+/* Add blue accent to selected text */
+::selection {
+    background-color: rgba(77, 171, 247, 0.3);
 }
