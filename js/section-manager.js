@@ -258,19 +258,41 @@ export class SectionManager {
         const experienceItem = document.createElement('div');
         experienceItem.className = 'experience-item';
         
+        // Get display options from config
+        const displayOptions = this.configManager.getConfig()?.experience?.display_options || {};
+        
+        // Set expanded class by default if default_open is true
+        if (displayOptions.default_open || displayOptions.always_open) {
+            experienceItem.classList.add('expanded');
+        }
+        
         const responsibilitiesHtml = Array.isArray(job.responsibilities)
             ? job.responsibilities.map(resp => `<li>${resp}</li>`).join('')
             : `<li>${job.responsibilities}</li>`;
         
         let logoHtml = '';
         if (job.logo || job.logo_dark) {
+            // Apply logo size from config
+            const logoSize = displayOptions.logo_size || 'medium';
+            const logoClass = `company-logo logo-size-${logoSize}`;
+            
             logoHtml = `
-                <div class="company-logo">
+                <div class="${logoClass}">
                     ${job.logo ? `<img src="${job.logo}" alt="${job.company} logo" class="light-mode-logo" loading="lazy">` : ''}
                     ${job.logo_dark ? `<img src="${job.logo_dark}" alt="${job.company} logo" class="dark-mode-logo" loading="lazy">` : ''}
                 </div>
             `;
         }
+        
+        // Only show accordion toggle if not explicitly hidden
+        const showArrows = displayOptions.show_arrows !== false;
+        const arrowsHtml = showArrows ? `
+            <div class="accordion-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                </svg>
+            </div>
+        ` : '';
         
         experienceItem.innerHTML = `
             <div class="experience-header">
@@ -279,11 +301,7 @@ export class SectionManager {
                     ${job.date ? `<p class="date">${job.date}</p>` : ''}
                 </div>
                 ${logoHtml}
-                <div class="accordion-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6,9 12,15 18,9"></polyline>
-                    </svg>
-                </div>
+                ${arrowsHtml}
             </div>
             <div class="experience-content">
                 <ul>
@@ -294,9 +312,13 @@ export class SectionManager {
         
         // Add click event listener for accordion functionality
         const header = experienceItem.querySelector('.experience-header');
-        header.addEventListener('click', () => {
-            this.toggleExperienceAccordion(experienceItem);
-        });
+        const isCollapsible = !displayOptions.collapsible === false && !displayOptions.always_open;
+        
+        if (isCollapsible) {
+            header.addEventListener('click', () => {
+                this.toggleExperienceAccordion(experienceItem);
+            });
+        }
         
         return experienceItem;
     }
