@@ -1,6 +1,6 @@
 /* Experience Section */
 .experience-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem; /* Increased spacing between experience items */
     background-color: var(--card-background);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -8,29 +8,41 @@
     overflow: hidden;
 }
 
-.experience-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+/* Always show experience content */
+.experience-content {
+    padding: 0 1.5rem 1rem; /* Reduced bottom padding */
+    max-height: none !important; /* Ensure content is always visible */
+    overflow: visible;
+    display: block !important; /* Always show content */
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Experience Header (always visible) */
+/* Remove accordion styling */
 .experience-header {
+    cursor: default; /* Remove pointer cursor */
+    padding: 0.75rem 1rem; /* Reduced padding */
     display: flex;
-    gap: 2rem;
-    align-items: center;
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: var(--transition);
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* Prevent wrapping to keep items side by side */
+}
+
+/* Remove accordion toggle icon */
+.accordion-toggle {
+    display: none !important; /* Hide accordion toggle */
 }
 
 /* Experience Header Content */
 .experience-header-content {
-    flex: 1;
+    flex: 0 0 60%; /* Increased from 35% to 60% to give more space to text */
+    min-width: 60%;
+    max-width: 60%;
+    padding-right: 1.5rem; /* Increased padding for better spacing */
 }
 
 .experience-header-content h3 {
     color: var(--heading-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Reduced margin */
 }
 
 .experience-header-content .date {
@@ -41,9 +53,11 @@
 
 /* Experience Content (collapsible) */
 .experience-content {
-    padding: 0;
-    max-height: 0;
-    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1.5rem 1rem; /* Reduced bottom padding */
+    max-height: none !important; /* Ensure content is always visible */
+    overflow: visible;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -53,16 +67,20 @@
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Experience Content list */
 .experience-content ul {
+    width: 60%; /* Match header content width */
+    padding-right: 1.5rem;
+    margin-top: 0.25rem; /* Reduced margin */
     list-style: none;
     color: var(--text-muted);
-    margin: 0;
 }
 
 .experience-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem; /* Reduced spacing between items */
     position: relative;
-    padding-left: 1rem;
+    padding-left: 1.25rem; /* Increase indent for bullet points */
+    line-height: 1.5; /* Improve readability */
 }
 
 .experience-content li::before {
@@ -72,43 +90,43 @@
     color: var(--text-muted);
 }
 
-/* Accordion Toggle Icon */
-.accordion-toggle {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-}
-
-.experience-item.expanded .accordion-toggle {
-    transform: rotate(180deg);
-}
-
-/* Company Logo */
+/* Company Logo - smaller height with right alignment and rounded corners */
 .company-logo {
-    width: 140px;
-    flex-shrink: 0;
+    width: 40%;
+    height: 80px; /* Decreased from 100px to 80px */
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: auto 0;
-    padding: 1rem;
+    justify-content: flex-end; /* Right align */
+    overflow: hidden;
+    background-color: transparent; /* Make background transparent */
+    border-radius: 90px;
 }
 
 .company-logo img {
-    width: 100%;
+    max-width: 70%;
+    max-height: 70%;
+    width: auto;
     height: auto;
     object-fit: contain;
-    display: none;
-    max-height: 50px;
+    display: block;
+    border-radius: 20%; /* Increased border radius for more rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 2rem; /* Add right margin to create floating effect */
 }
 
+/* Enhanced hover effect for floating appearance */
+.company-logo:hover img {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Light/dark mode specific display logic */
 .company-logo .light-mode-logo {
-    display: block;
+    display: block; /* Ensure light mode logo is visible by default */
 }
 
 [data-theme="dark"] .company-logo .light-mode-logo {
@@ -118,3 +136,34 @@
 [data-theme="dark"] .company-logo .dark-mode-logo {
     display: block;
 }
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+    .experience-header {
+        flex-direction: column;
+    }
+    
+    .experience-header-content {
+        flex: 0 0 100%;
+        min-width: 100%;
+        max-width: 100%;
+        padding-right: 0;
+    }
+    
+    .company-logo {
+        height: 80px; /* Consistent height on mobile */
+        justify-content: center; /* Center on mobile */
+    }
+    
+    .company-logo img {
+        margin-right: 0; /* Remove margin on mobile */
+        max-width: 60%;
+        max-height: 60%;
+    }
+    
+    .experience-content ul {
+        width: 100%;
+        padding-right: 0;
+    }
+}
+

@@ -256,7 +256,7 @@ export class SectionManager {
     // Create individual experience item
     createExperienceItem(job) {
         const experienceItem = document.createElement('div');
-        experienceItem.className = 'experience-item';
+        experienceItem.className = 'experience-item expanded'; // Add expanded class by default
         
         const responsibilitiesHtml = Array.isArray(job.responsibilities)
             ? job.responsibilities.map(resp => `<li>${resp}</li>`).join('')
@@ -279,11 +279,7 @@ export class SectionManager {
                     ${job.date ? `<p class="date">${job.date}</p>` : ''}
                 </div>
                 ${logoHtml}
-                <div class="accordion-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6,9 12,15 18,9"></polyline>
-                    </svg>
-                </div>
+                <!-- Removed accordion toggle arrow -->
             </div>
             <div class="experience-content">
                 <ul>
@@ -292,18 +288,15 @@ export class SectionManager {
             </div>
         `;
         
-        // Add click event listener for accordion functionality
-        const header = experienceItem.querySelector('.experience-header');
-        header.addEventListener('click', () => {
-            this.toggleExperienceAccordion(experienceItem);
-        });
+        // Remove click event listener to prevent toggling
         
         return experienceItem;
     }
 
-    // Toggle experience accordion
+    // Toggle experience accordion - making this a no-op function
     toggleExperienceAccordion(experienceItem) {
-        experienceItem.classList.toggle('expanded');
+        // No longer toggle the expanded class
+        // experienceItem.classList.toggle('expanded');
     }
 
     // Toggle project accordion

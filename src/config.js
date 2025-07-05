@@ -153,16 +153,52 @@ export default {
       title: "Professional Experience",
       jobs: [
         {
-          company: "Google Developer Groups On Campus – BVDU DMS",
+          company: "Google Developer Groups On Campus – BVDU DMS NM",
           role: "Web Lead",
-          date: "Dec 2023 – Present",
+          date: "Sep 2024 – Present",
           responsibilities: [
-            "Organized 7+ tech events and speaker sessions including Google's Rakesh Varade",
-            "Built and deployed PWA platforms for campus event registrations",
-            "Led sponsorship outreach and hosted cross-college community meetups"
+            "Led 3 major tech events in the GDG On Campus chapter",
+            "Volunteered and contributed to all 7+ events organized by the chapter",
+            "Coordinated cross-team collaboration and technical logistics during meetups"
           ],
-          logo: "assets/logos/Placeholder_Logo.png",
-          logo_dark: "assets/logos/Placeholder_Logo.png"
+          logo: "assets/logos/Gdgoclogo.jpeg",
+          logo_dark: "assets/logos/Gdgoclogo.jpeg"
+        },
+        {
+          company: "Vertex Community – BVDU DMS",
+          role: "President",
+          date: "Apr 2024 – Present",
+          responsibilities: [
+            "Leading a technical community of over 500+ students focused on development, tech talks, DSA and project building",
+            "Organized and managed multiple campus events including coding contests, mentoring, etc.",
+            "Guided the core team in content planning, outreach strategies, and technical execution"
+          ],
+          logo: "assets/logos/Vertex Community Logo.png",
+          logo_dark: "assets/logos/Vertex Community Logo.png"
+        },
+        {
+          company: "Student Council – BVDU DMS",
+          role: "Technical Co-Secretary",
+          date: "September 2024 – May 2025",
+          responsibilities: [
+            "Managed end-to-end logistics for Alkemy Fest 2025 including technical setups, and equipment allocation",
+            "Led the planning and execution of esports tournaments as part of the fest, ensuring fair play and high participation wih 1500 participants",
+            "Collaborated with event coordinators and volunteers to ensure smooth operations across multiple fest activities"
+          ],
+          logo: "assets/logos/alkemy.png",
+          logo_dark: "assets/logos/alkemy.png"
+        },
+        {
+          company: "Cloud Community Days 2025 – GDG Cloud Mumbai",
+          role: "Volunteer",
+          date: "14th June 2025",
+          responsibilities: [
+            "Assisted in on-ground event logistics, speaker coordination, and attendee support at a large-scale offline community event",
+            "Worked closely with GDG Cloud Mumbai organizers to ensure smooth execution of sessions and workshops",
+            "Engaged with developers, facilitated networking, and supported documentation and community interactions"
+          ],
+          logo: "assets/logos/ccd.JPG",
+          logo_dark: "assets/logos/ccd.JPG"
         }
       ]
     },
