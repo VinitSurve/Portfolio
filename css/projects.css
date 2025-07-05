@@ -250,17 +250,96 @@
 .project-image {
     width: 50%;
     height: auto;
-    min-height: 250px;
+    min-height: 300px; /* Ensure minimum height */
+    max-height: 400px; /* Add maximum height for consistency */
     overflow: hidden;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-background-darker);
+    position: relative;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0; /* Add rounded borders on right side */
+    padding: 1rem; /* Add padding to create space around the image */
 }
 
 .project-image img {
+    width: auto; /* Allow natural width */
+    height: auto; /* Allow natural height */
+    max-width: 90%; /* Limit width to ensure it's centered with space */
+    max-height: 90%; /* Limit height to ensure it's centered with space */
+    object-fit: contain; /* Maintain aspect ratio */
+    display: block;
+    border-radius: 8px; /* Add rounded borders to images */
+    margin: 0 auto; /* Center horizontally */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow for floating effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add hover effect to enhance floating feeling */
+.project-image:hover img {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Project gallery specific styles */
+.project-gallery {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-wrapper {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remove padding to give more space to the image */
+}
+
+.gallery-slide img {
+    width: auto; /* Allow the image to maintain its natural width */
+    height: auto;
+    max-width: 100%; /* Ensure image doesn't overflow */
+    max-height: 100%;
+    object-fit: contain; /* Changed back to contain to prevent zooming */
+}
+
+/* For mobile devices - keep existing code but update image handling */
+@media (max-width: 768px) {
+    .project-item {
+        flex-direction: column;
+    }
+    
+    .project-image {
+        width: 100%;
+        min-height: 200px;
+        max-height: 300px; /* Add maximum height for mobile */
+        order: -1; /* Show image at the top on mobile */
+        border-radius: var(--border-radius) var(--border-radius) 0 0; /* Rounded on top only for mobile */
+    }
+    
+    .project-content {
+        width: 100%;
+    }
+    
+    .project-image img,
+    .gallery-slide img {
+        height: auto;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
 }
 
 /* Projects on GitHub Section */
@@ -377,4 +456,18 @@
 .see-all-repos a:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode text color fixes */
+:root[data-theme="dark"] .project-content li,
+:root[data-theme="dark"] .project-content li::before {
+    color: #ffffff; /* White text for list items */
+}
+
+:root[data-theme="dark"] .project-content .date {
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for dates */
+}
+
+:root[data-theme="dark"] .project-accordion-toggle {
+    color: #ffffff; /* White for accordion toggle */
 }

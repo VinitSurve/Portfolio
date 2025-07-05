@@ -1,0 +1,59 @@
+/* Theme-specific color styles */
+
+/* Light mode */
+:root {
+    --primary-color: #3498db; /* Blue for buttons and accents */
+    --heading-color: #3498db; /* Blue headings for light mode */
+    --primary-color-dark: #2980b9; /* Darker blue for hover effects */
+    --live-demo-color: #2980b9; /* Dark blue for live demo button */
+}
+
+/* Dark mode */
+:root[data-theme="dark"] {
+    --text-color: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.8); /* Lighter shade of white instead of grey */
+    --heading-color: #4dabf7; /* Lighter blue for dark mode headings */
+    --primary-color: #4dabf7; /* Lighter blue for dark mode primary elements */
+    --primary-color-dark: #3d8bd2; /* Slightly darker for hover effects */
+    --live-demo-color: #343fbb; /* Keep live demo button dark blue in both modes */
+}
+
+/* Specific heading styles */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+}
+
+/* Section headings */
+section h2 {
+    color: var(--heading-color);
+    font-weight: 700;
+}
+
+/* Project headings */
+.project-content h3, 
+.project-content-desktop h3,
+.project-header-content h3 {
+    color: var(--heading-color);
+}
+
+/* Skill category headings */
+.skill-category h3 {
+    color: var(--heading-color);
+}
+
+/* Experience headings */
+.experience-header-content h3 {
+    color: var(--heading-color);
+}
+
+/* Live demo button - always dark blue */
+.live-demo-btn {
+    background-color: var(--live-demo-color) !important;
+    border-color: var(--live-demo-color) !important;
+    color: white !important;
+}
+
+.live-demo-btn:hover {
+    background-color: var(--primary-color-dark) !important;
+    border-color: var(--primary-color-dark) !important;
+}

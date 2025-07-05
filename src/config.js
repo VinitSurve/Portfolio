@@ -25,14 +25,16 @@ export default {
     site: {
       title: "Vinit Surve",
       description: "Web Developer • Event Organizer • GDG Web Lead. Explore projects, tech events, and my community journey.",
+      profile_picture: "assets/logos/me2.jpg",
       seo: {
         title: "Vinit Surve - Developer Portfolio",
         description: "Web Developer • Event Organizer • GDG Web Lead. Explore projects, tech events, and my community journey.",
         keywords: "developer, portfolio, github, firebase, google cloud, gdg, web lead, community builder",
         author: "Vinit Surve",
-        og_image: "https://avatars.githubusercontent.com/VinitSurve",
+        og_image: "assets/logos/me2.jpg",
         twitter_card: "summary_large_image",
-        base_url: "https://VinitSurve.github.io/Portfolio"
+        base_url: "https://VinitSurve.github.io/Portfolio",
+        icon: "assets/logos/me2.jpg"
       }
     },
     header: {
@@ -73,7 +75,9 @@ export default {
             "Helps students apply for leaves digitally with role-based access for approval",
             "Integrated Supabase storage for uploading documents"
           ],
-          picture: "assets/projects/od-form.png",
+          pictures: [
+            "assets/projects/od-forms.png",
+          ],
           link: {
             url: "https://github.com/VinitSurve/od-forms",
             title: "View Code"
@@ -91,7 +95,9 @@ export default {
             "Built with React (Vite) and Supabase for realtime data storage and analytics",
             "Includes mobile-responsive UI, dark/light themes, and PWA support"
           ],
-          picture: "assets/projects/finance-tracker.png",
+          pictures: [
+            "assets/projects/finance-tracker.png",
+          ],
           link: {
             url: "https://github.com/VinitSurve/Finance-Tracker",
             title: "View Code"
@@ -109,7 +115,9 @@ export default {
             "Built with React (Vite), Supabase, and custom analytics dashboard",
             "Features question timer, self-marking, progress stats, and goal-based tracking"
           ],
-          picture: "assets/projects/exam-tracker.png",
+          pictures: [
+            "assets/projects/PrecisionPrep.png",
+          ],
           link: {
             url: "https://github.com/VinitSurve/PrecisionPrep",
             title: "View Code"
@@ -127,7 +135,9 @@ export default {
             "Displays atomic details (number, mass, group) in a tooltip on click",
             "Hands‑on project for mastering DOM manipulation and responsive layouts"
           ],
-          picture: "assets/projects/periodic-table.png",
+          pictures: [
+            "assets/projects/Periodic_table.png",
+          ],
           link: {
             url: "https://github.com/VinitSurve/Periodic-Table",
             title: "View Code"
@@ -136,7 +146,7 @@ export default {
             url: "https://periodic-table-umber-one.vercel.app/",
             title: "Live Demo"
           }
-        },
+        }
       ]
     },
     experience: {
@@ -167,7 +177,8 @@ export default {
             "Java",
             "TypeScript",
             "React",
-            "Next Js"
+            "Next Js",
+            "Node.js",
           ]
         },
         {

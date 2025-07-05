@@ -149,6 +149,32 @@ export class SectionManager {
             `;
         }
         
+        // Handle project images
+        let projectImageHtml = '';
+        if (project.pictures && project.pictures.length > 0) {
+            // Use first image only for consistency
+            projectImageHtml = `
+            <div class="project-image">
+                <div class="gallery-wrapper">
+                    <div class="gallery-slide">
+                        <img src="${project.pictures[0]}" alt="${project.name} project screenshot" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            `;
+        } else if (project.picture) {
+            // Fallback for legacy single image format
+            projectImageHtml = `
+            <div class="project-image">
+                <div class="gallery-wrapper">
+                    <div class="gallery-slide">
+                        <img src="${project.picture}" alt="${project.name} project screenshot" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+        
         projectItem.innerHTML = `
             <div class="project-header">
                 <div class="project-header-content">
@@ -171,11 +197,7 @@ export class SectionManager {
                 </ul>
                 ${projectLinksHtml}
             </div>
-            ${project.picture ? `
-            <div class="project-image">
-                <img src="${project.picture}" alt="${project.name} project screenshot" loading="lazy">
-            </div>
-            ` : ''}
+            ${projectImageHtml}
         `;
         
         // Add click event listener for accordion functionality on mobile

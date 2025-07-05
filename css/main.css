@@ -11,3 +11,25 @@
 @import url('./footer.css');
 @import url('./animations.css');
 @import url('./responsive.css');
+
+/* Modify text colors in dark mode */
+:root[data-theme="dark"] {
+    --text-color: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.8); /* Lighter shade of white instead of grey */
+    --heading-color: #ffffff;
+}
+
+/* For specific text elements that might be using grey in dark mode */
+:root[data-theme="dark"] .project-content li,
+:root[data-theme="dark"] .project-content p,
+:root[data-theme="dark"] .experience-content li,
+:root[data-theme="dark"] .about p,
+:root[data-theme="dark"] .skill-category li {
+    color: #ffffff;
+}
+
+:root[data-theme="dark"] .date,
+:root[data-theme="dark"] .tagline,
+:root[data-theme="dark"] .footer-built-with {
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white instead of grey */
+}
