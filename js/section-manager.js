@@ -323,9 +323,10 @@ export class SectionManager {
         return experienceItem;
     }
 
-    // Toggle experience accordion
+    // Toggle experience accordion - making this a no-op function
     toggleExperienceAccordion(experienceItem) {
-        experienceItem.classList.toggle('expanded');
+        // No longer toggle the expanded class
+        // experienceItem.classList.toggle('expanded');
     }
 
     // Toggle project accordion
